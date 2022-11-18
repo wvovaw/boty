@@ -1,7 +1,7 @@
 import { MenuEntry } from "../types.ts";
 export const buyMenuEntries: MenuEntry[] = [
   {
-    id: "Moscow1",
+    id: "moscow5",
     title: "Россия 5 Гб",
     text: `<b>Информация о сервере:</b>
     Москва, 5 Gb, 
@@ -10,7 +10,7 @@ export const buyMenuEntries: MenuEntry[] = [
     Стоимость: 99 руб`,
   },
   {
-    id: "Moscow2",
+    id: "moscow40",
     title: "Россия 40 Гб",
     text: `<b>Информация о сервере:</b>
     Москва, 40 Gb, 
@@ -19,7 +19,7 @@ export const buyMenuEntries: MenuEntry[] = [
     Стоимость: 149 руб`,
   },
   {
-    id: "Amsterdam1",
+    id: "amsterdam5",
     title: "Нидерланды 5 Гб",
     text: `<b>Информация о сервере:</b>
     Амстердам, 5 Gb, 
@@ -28,7 +28,7 @@ export const buyMenuEntries: MenuEntry[] = [
     Стоимость: 99 руб`,
   },
   {
-    id: "Amsterdam2",
+    id: "amsterdam40",
     title: "Нидерланды 40 Гб",
     text: `<b>Информация о сервере</b>
     Амстердам, 40 Gb, 
@@ -37,8 +37,8 @@ export const buyMenuEntries: MenuEntry[] = [
     Стоимость: 149 руб`,
   },
   {
-    id: "NewYourk1",
-    title: "Нью-Йорк 100 Гб",
+    id: "newyourk1",
+    title: "Нью-Йорк 1 Гб",
     text: `<b>Информация о сервере</b>
     Нью-Йорк, 100 Gb, 
     Рейтинг: 4,4
