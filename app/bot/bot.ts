@@ -15,10 +15,10 @@ import { SessionData, MyContext } from "./types.ts";
 import { mainMenu, mainMenuText } from "./markups/menus.ts";
 import { helpConversation } from "./helpConversation.ts";
 
-Deno.env.set(
-  "TELEGRAM_API_KEY",
-  "5718100835:AAEi8_THMSeeJi4yEkPemyBZUM_wmjK9aE0"
-);
+// Deno.env.set(
+//   "TELEGRAM_API_KEY",
+//   "5718100835:AAEi8_THMSeeJi4yEkPemyBZUM_wmjK9aE0"
+// );
 
 export const bot = new Bot<MyContext>(
   Deno.env.get("TELEGRAM_API_KEY") as string
