@@ -1,3 +1,4 @@
+import "https://deno.land/std@0.167.0/dotenv/load.ts";
 import {
   Bot,
   session,
@@ -13,11 +14,12 @@ import {
 
 import { SessionData, MyContext } from "./types.ts";
 import { mainMenu, mainMenuText } from "./markups/menus.ts";
-import { helpConversation } from "./helpConversation.ts";
+import { citiesMenu, citiesMenuText } from "./markups/menus.ts";
+import { reportConversation } from "./reportConversation.ts";
 
 // Deno.env.set(
 //   "TELEGRAM_API_KEY",
-//   "5718100835:AAEi8_THMSeeJi4yEkPemyBZUM_wmjK9aE0"
+//   "5828208342:AAH7EN7ohry9QRWfQHH-zAB3jVScal_vGcI"
 // );
 
 export const bot = new Bot<MyContext>(
@@ -27,13 +29,13 @@ export const bot = new Bot<MyContext>(
 bot.use(
   session({
     initial(): SessionData {
-      return { storage: [] };
+      return { city: "" };
     },
   })
 );
 
 bot.use(conversations());
-bot.use(createConversation(helpConversation, "help"));
+bot.use(createConversation(reportConversation, "report"));
 bot.use(mainMenu);
 
 bot.command("start", (ctx) =>
@@ -42,8 +44,28 @@ bot.command("start", (ctx) =>
     parse_mode: "HTML",
   })
 );
+bot.command("report", (ctx) =>
+  ctx.reply(citiesMenuText, {
+    reply_markup: citiesMenu,
+    parse_mode: "HTML",
+  })
+);
 bot.command("help", async (ctx) => {
-  await ctx.reply("Send /start");
+  await ctx.reply(
+    `
+<b>Формат отправки кодов:</b>
+
+Несколько кодов можно отправить в одном сообщении сразу. Каждый код на отдельной строке.
+Пример:
+
+abc123
+321bcd
+123112
+
+- три кода, отправленные одним отчетом.
+  `,
+    { parse_mode: "HTML" }
+  );
 });
 
 bot.catch((err) => {

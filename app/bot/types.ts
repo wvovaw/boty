@@ -9,7 +9,7 @@ import {
 } from "https://deno.land/x/grammy_conversations@v1.0.3/mod.ts";
 
 export interface SessionData {
-  storage: Record<string, any>;
+  city: string;
 }
 export type MyContext = Context &
   SessionFlavor<SessionData> &
