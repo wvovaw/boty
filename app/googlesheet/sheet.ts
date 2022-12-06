@@ -1,4 +1,3 @@
-import "https://deno.land/std@0.167.0/dotenv/load.ts";
 import { getGoogleToken } from "./lib/auth.ts";
 
 const sheetUrl =

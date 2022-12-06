@@ -1,4 +1,3 @@
-import "https://deno.land/std@0.167.0/dotenv/load.ts";
 import {
   Bot,
   session,
@@ -16,11 +15,6 @@ import { SessionData, MyContext } from "./types.ts";
 import { mainMenu, mainMenuText } from "./markups/menus.ts";
 import { citiesMenu, citiesMenuText } from "./markups/menus.ts";
 import { reportConversation } from "./reportConversation.ts";
-
-// Deno.env.set(
-//   "TELEGRAM_API_KEY",
-//   "5828208342:AAH7EN7ohry9QRWfQHH-zAB3jVScal_vGcI"
-// );
 
 export const bot = new Bot<MyContext>(
   Deno.env.get("TELEGRAM_API_KEY") as string
