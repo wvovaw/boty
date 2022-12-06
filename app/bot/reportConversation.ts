@@ -38,17 +38,9 @@ export async function reportConversation(
     await writeSpreadsheet("active", m1.split("\n"), ctx.session.city, date);
   if (m2 !== ".")
     await writeSpreadsheet("deactive", m2.split("\n"), ctx.session.city, date);
-  // if (m1 !== ".")
-  //   await ctx.reply(
-  //     "Вы ввели следующие коды актив:" + JSON.stringify(m1.split("\n"))
-  //   );
-  // if (m2 !== ".")
-  //   await ctx.reply(
-  //     "Вы ввели следующие коды деактив:" + JSON.stringify(m2.split("\n"))
-  //   );
-  else
-    await ctx.reply(
-      "Отчёт принят и сохранён. /report чтобы отправить ещё один отчёт"
-    );
+
+  await ctx.reply(
+    "Отчёт принят и сохранён. /report чтобы отправить ещё один отчёт"
+  );
   return;
 }
