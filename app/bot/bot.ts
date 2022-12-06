@@ -1,3 +1,4 @@
+// import "https://deno.land/std@0.167.0/dotenv/load.ts";
 import {
   Bot,
   session,
@@ -6,7 +7,6 @@ import {
 } from "https://deno.land/x/grammy@v1.12.0/mod.ts";
 
 import {
-  type Conversation,
   conversations,
   createConversation,
 } from "https://deno.land/x/grammy_conversations@v1.0.3/mod.ts";

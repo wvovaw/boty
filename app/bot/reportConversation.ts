@@ -1,6 +1,6 @@
 import { MyContext, MyConversation } from "./types.ts";
 import { writeSpreadsheet } from "../googlesheet/sheet.ts";
-import { mainMenu, mainMenuText } from "./markups/menus.ts";
+import { mainMenu } from "./markups/menus.ts";
 
 export async function reportConversation(
   conversation: MyConversation,
@@ -29,28 +29,38 @@ export async function reportConversation(
   }
   await ctx.reply("...Идёт запись. Ожидайте.");
 
-  const date = new Date()
-    .toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })
-    .replaceAll("/", ".")
-    .split(",")[0];
+  try {
+    await conversation.external(async () => {
+      const date = new Date()
+        .toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })
+        .replaceAll("/", ".")
+        .split(",")[0];
 
-  if (m1 !== ".")
-    await writeSpreadsheet(
-      "active",
-      m1.split("\n").filter((el) => el.length > 0),
-      ctx.session.city,
-      date
-    );
-  if (m2 !== ".")
-    await writeSpreadsheet(
-      "deactive",
-      m2.split("\n").filter((el) => el.length > 0),
-      ctx.session.city,
-      date
-    );
+      if (m1 !== ".")
+        await writeSpreadsheet(
+          "active",
+          m1.split("\n").filter((el) => el.length > 0),
+          ctx.session.city,
+          date
+        );
+      if (m2 !== ".")
+        await writeSpreadsheet(
+          "deactive",
+          m2.split("\n").filter((el) => el.length > 0),
+          ctx.session.city,
+          date
+        );
+    });
 
-  await ctx.reply(
-    "Отчёт принят и сохранён. /report чтобы отправить ещё один отчёт"
-  );
-  return;
+    await ctx.reply(
+      "Отчёт принят и сохранён. /report чтобы отправить ещё один отчёт"
+    );
+    return;
+  } catch {
+    await ctx.answerCallbackQuery(
+      "Во время попытки работы с таблицей прозошла ошибка. Повторите попытку."
+    );
+  } finally {
+    // TODO: send /report button
+  }
 }

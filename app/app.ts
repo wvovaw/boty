@@ -1,5 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-import { webhookCallback } from "../deps.deno.ts";
+import { webhookCallback } from "https://deno.land/x/grammy@v1.8.3/mod.ts";
 import { bot } from "./bot/bot.ts";
 
 const app: Application = new Application();
