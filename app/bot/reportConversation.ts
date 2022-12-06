@@ -35,9 +35,19 @@ export async function reportConversation(
     .split(",")[0];
 
   if (m1 !== ".")
-    await writeSpreadsheet("active", m1.split("\n"), ctx.session.city, date);
+    await writeSpreadsheet(
+      "active",
+      m1.split("\n").filter((el) => el.length > 0),
+      ctx.session.city,
+      date
+    );
   if (m2 !== ".")
-    await writeSpreadsheet("deactive", m2.split("\n"), ctx.session.city, date);
+    await writeSpreadsheet(
+      "deactive",
+      m2.split("\n").filter((el) => el.length > 0),
+      ctx.session.city,
+      date
+    );
 
   await ctx.reply(
     "Отчёт принят и сохранён. /report чтобы отправить ещё один отчёт"
